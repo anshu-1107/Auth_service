@@ -1,3 +1,4 @@
+const { sign } = require("jsonwebtoken");
 const UserService = require("../service/user_service");
 
 const userService = new UserService();
@@ -45,7 +46,28 @@ const getById = async (req,res)=>{
     }
 }
 
+const signIn = async (req,res)=>{
+    try {
+        const response = await userService.signIn(req.body.email,req.body.password);
+        return res.status(200).json({
+            success:true,
+            data:response,
+            error:{},
+            message:"Sucessfully signed in"
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message:"Someting went wrong in controller",
+            data:{},
+            success:false,
+            error:{error}
+        })
+    }
+}
+
 module.exports={
     create,
-    getById
+    getById,
+    signIn
 }
