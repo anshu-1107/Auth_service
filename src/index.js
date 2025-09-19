@@ -19,11 +19,11 @@ const prepareAndStart = ()=>{
         if(DB_SYNC==true){
             db.sequelize.sync({alter:true})
         }
-        const u1 = await User.findByPk(4);
-        const r1 = await Role.findByPk(3);
-        // u1.addRole(r1);
-        const response = await u1.getRoles();
-        console.log(response);
+        // const u1 = await User.findByPk(4);
+        // const r1 = await Role.findByPk(3);
+        // // u1.addRole(r1);
+        // const response = await u1.getRoles();
+        // console.log(response);
 
     })
 
